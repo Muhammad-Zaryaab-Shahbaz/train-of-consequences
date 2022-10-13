@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TryHackMe | Train of Consequences</title>
+    <meta
+      name="description"
+      content="TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs, all through your browser!"
+    />
+    <meta
+      name="og:description"
+      content="TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs, all through your browser!"
+    />
+    <meta
+      name="keywords"
+      content="cyber,security,cyber security,cyber security training,coding,computer,bitcoin,hacking,hackers,hacks,hack,exploits,keylogger,learn,poc"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <meta property="og:site_name" content="TryHackMe" />
+    <meta property="og:title" content="TryHackMe | Cyber Security Training" />
+    <meta
+      property="og:image"
+      content="https://tryhackme.com/img/meta/default.png"
+    />
+    <meta property="og:url" content="https://tryhackme.com" />
+    <meta
+      name="twitter:image"
+      content="https://tryhackme.com/img/meta/default.png"
+    />
+    <meta
+      property="og:description"
+      content="An online platform for learning and teaching cyber security, all through your browser."
+    />
+    <meta
+      title="author"
+      content="Muhammad Zaryaab Shahbaz (zariab64@gmail.com)"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://assets.tryhackme.com/img/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div
+      class="modal fade"
+      id="modal"
+      aria-hidden="true"
+      aria-labelledby="modalLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Flag</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            {THM_MegadethRules}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="pt-5 text-center">Train of Consequences</h1>
+          <div class="card my-2">
+            <div class="card-header">
+              Summary
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                This static site will help people learn about “Train of
+                Consequences”, a song by the metal band Megadeth.
+              </p>
+            </div>
+          </div>
+          <div class="card my-2">
+            <div class="card-header">
+              Description
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                There is a <b>capture-the-flag</b> type of scenario. We have a
+                <a
+                  href="#train-block"
+                  onclick="scrollToElement(event,'train-block')"
+                  >train</a
+                >
+                shown below that moves from <b>left (initial point)</b> to
+                <b>right (finish line)</b>. Each correct answer to the
+                <a
+                  href="#question-block"
+                  onclick="scrollToElement(event,'question-block')"
+                  >question</a
+                >
+                will move the train closer to the finish line. You have to
+                answer four questions one by one.
+              </p>
+            </div>
+          </div>
+          <div id="train-block" class="mb-3">
+            <img id="train-img" class="w-100" src="images/1.png" />
+          </div>
+          <div class="card my-2" id="question-block">
+            <div class="card-header">
+              <b>Question #<span id="question-number">1</span>: </b
+              ><span id="question"
+                >What year was Train of Consequences released?</span
+              >
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <small class="mr-2">Answer:</small>
+                <span
+                  id="option-1"
+                  onclick="markAnswer(0)"
+                  class="badge cursor-pointer text-bg-light"
+                  >1973</span
+                >
+                <span
+                  id="option-2"
+                  onclick="markAnswer(1)"
+                  class="badge cursor-pointer text-bg-light"
+                  >1988</span
+                >
+                <span
+                  id="option-3"
+                  onclick="markAnswer(2)"
+                  class="badge cursor-pointer text-bg-light"
+                  >1994</span
+                >
+                <span
+                  id="option-4"
+                  onclick="markAnswer(3)"
+                  class="badge cursor-pointer text-bg-light"
+                  >1999</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- <div
+          class="col-2 d-flex flex-column align-items-center justify-content-center"
+        >
+          <p>S</p>
+          <p>T</p>
+          <p>A</p>
+          <p>R</p>
+          <p>T</p>
+        </div>
+        <div class="col-8">
+          <div id="train-block" class="mb-3">
+            <img id="train-img" class="w-100" src="images/1.png" />
+          </div>
+        </div>
+        <div
+          class="col-2 d-flex flex-column align-items-center justify-content-center"
+        >
+          <p>F</p>
+          <p>L</p>
+          <p>A</p>
+          <p>G</p>
+        </div> -->
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+    <script src="script.min.js"></script>
+  </body>
+</html>
