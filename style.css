@@ -28,7 +28,7 @@ p a {
   color: #f1685e;
 }
 .logo {
-  height: 100px;
+  max-height: 80px;
 }
 .question-count-block {
   color: #c4c6ca;
