@@ -1,20 +1,23 @@
 /**
  * Author: Muhammad Zaryaab Shahbaz
  * Email: zariab64@gmail.com
- * Date: 10/13/22
+ * Date: 10/14/22
  */
 const myModal = new bootstrap.Modal(document.getElementById("modal"), {});
 
 const markDanger = id => {
   const selectedOption = document.getElementById(`option-${id}`);
   selectedOption.classList.add("text-bg-danger");
-  selectedOption.classList.remove("text-bg-light");
 };
 
 const unMarkDanger = id => {
   const selectedOption = document.getElementById(`option-${id}`);
-  selectedOption.classList.add("text-bg-light");
   selectedOption.classList.remove("text-bg-danger");
+};
+
+const markCorrect = id => {
+  const selectedOption = document.getElementById(`option-${id}`);
+  selectedOption.classList.add("correct");
 };
 
 const scrollToElement = (e, id) => {
@@ -52,22 +55,33 @@ const quiz = [
 const guide = [2, 1, 0, 3];
 const totalQuestions = guide.length;
 
-const markAnswer = selectedAnswer => {
+const markAnswer = (selectedAnswer, e) => {
+  e.target.blur();
   // quiz has been completed
   if (currentQuestion === -1) return;
 
   // in case of incorrect answer, mark this option as danger
   if (guide[currentQuestion] !== selectedAnswer) {
+    unMarkDanger(1);
+    unMarkDanger(2);
+    unMarkDanger(3);
+    unMarkDanger(4);
     markDanger(selectedAnswer + 1);
     return;
   }
 
+  const option = document.getElementById(`option-${selectedAnswer + 1}`);
+  option.classList.add("correct");
+
   currentQuestion++;
   const realIndex = currentQuestion + 1;
-  // new image path
-  const newImagePath = `images/${realIndex}.png`;
-  // update image
-  document.getElementById("train-img").src = newImagePath;
+  // move train
+  const panelWidth = document.getElementById("train-block").clientWidth;
+  const trainWidth = document.getElementById("train").clientWidth;
+  const totalWidth = panelWidth - trainWidth;
+  // calculat left offset
+  const left = (totalWidth / totalQuestions) * currentQuestion;
+  document.getElementById("train").style.left = `${left}px`;
 
   // correct answer
   if (currentQuestion === totalQuestions) {
@@ -85,16 +99,24 @@ const markAnswer = selectedAnswer => {
   unMarkDanger(3);
   unMarkDanger(4);
 
-  // update question and answers
-  const question = quiz[currentQuestion];
-  let i = 0;
-  document.getElementById("question-number").innerText = realIndex;
-  document.getElementById("question").innerText = question.question;
+  setTimeout(() => {
+    option.classList.remove("correct");
+    // update question and answers
+    const question = quiz[currentQuestion];
+    let i = 0;
+    document.getElementById("question-number").innerText = realIndex;
+    document.getElementById("question").innerText = question.question;
 
-  //populate options
-  document.getElementById(`option-${i + 1}`).innerText = question.answers[i++];
-  document.getElementById(`option-${i + 1}`).innerText = question.answers[i++];
-  document.getElementById(`option-${i + 1}`).innerText = question.answers[i++];
-  document.getElementById(`option-${i + 1}`).innerText = question.answers[i++];
+    //populate options
+    document.getElementById(`option-${i + 1}`).innerText =
+      question.answers[i++];
+    document.getElementById(`option-${i + 1}`).innerText =
+      question.answers[i++];
+    document.getElementById(`option-${i + 1}`).innerText =
+      question.answers[i++];
+    document.getElementById(`option-${i + 1}`).innerText =
+      question.answers[i++];
+  }, 500);
+
   return;
 };

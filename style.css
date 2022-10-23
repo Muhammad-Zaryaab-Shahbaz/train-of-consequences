@@ -3,8 +3,11 @@
 html,
 h1,
 h2,
+h3,
+h4,
 p,
-a {
+a,
+button {
   font-family: "Inter";
 }
 
@@ -15,8 +18,52 @@ body {
 }
 
 body {
-  background: #c111114d;
+  background-color: #161e2d;
+  color: white;
+}
+p .highlight {
+  color: rgb(136, 204, 20);
+}
+p a {
+  color: #f1685e;
+}
+.logo {
+  height: 100px;
+}
+.question-count-block {
+  color: #c4c6ca;
+}
+.option {
+  background-color: #454e60;
 }
 .cursor-pointer {
   cursor: pointer !important;
+}
+.train-block {
+  position: relative;
+}
+.train {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  transition: left 1s linear;
+}
+button.correct {
+  background-color: rgb(136, 204, 20) !important;
+}
+button:focus {
+  border: 1px solid transparent !important;
+}
+.option:hover {
+  background-color: #454e6087;
+}
+.modal-content {
+  background-color: #161e2d;
+  border: 1px solid rgb(136, 204, 20);
+  color: rgb(136, 204, 20);
+}
+.modal-header {
+  color: rgb(136, 204, 20);
+  border-bottom: 1px solid;
 }
