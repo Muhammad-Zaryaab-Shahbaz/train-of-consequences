@@ -87,6 +87,11 @@ const markAnswer = (selectedAnswer, e) => {
   if (currentQuestion === totalQuestions) {
     const flag = document.getElementById("flag");
     flag.innerText = atob(flag.innerText);
+    
+    unMarkDanger(1);
+    unMarkDanger(2);
+    unMarkDanger(3);
+    unMarkDanger(4);
     // this is the last question | display a flag with a delay
     setTimeout(() => {
       myModal.toggle();
